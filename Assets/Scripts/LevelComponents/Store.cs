@@ -4,7 +4,7 @@ using UnityEngine;
 public class Store : MonoBehaviour
 {
     // Events
-    public event Action emitBeat;
+    // public event Action emitBeat;
     
     // Variables
     
