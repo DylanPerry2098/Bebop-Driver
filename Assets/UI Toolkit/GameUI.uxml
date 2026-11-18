@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; margin-top: 0; margin-left: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+        <ui:GroupBox style="width: auto; justify-content: flex-start; align-items: center;">
+            <ui:Label text="SCORE" name="Score" style="position: absolute; white-space: nowrap; font-size: 50px; color: rgb(228, 228, 228);"/>
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>
