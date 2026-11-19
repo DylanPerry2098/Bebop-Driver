@@ -7,14 +7,18 @@ public class CarController : MonoBehaviour
     public float laneDistance = 2f;
     private int currentLane = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        Store.updateSlidePosition += ChangeLane;
+        Store.slideInputEvent += ChangeLane;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Called by Store event
+    void ChangeLane(int input)
     {
+        // Player input
+        currentLane += input;
+        currentLane = Mathf.Clamp(currentLane, 0, 2);
+        
         float targetX = (currentLane - 1) * laneDistance;
 
         Vector3 targetPosition = new Vector3(
@@ -28,12 +32,5 @@ public class CarController : MonoBehaviour
             targetPosition,
             moveSpeed * Time.deltaTime
         );
-    }
-
-    void ChangeLane(int input)
-    {
-        // Player input
-        currentLane += input;
-        currentLane = Mathf.Clamp(currentLane, 0, 2);
     }
 }

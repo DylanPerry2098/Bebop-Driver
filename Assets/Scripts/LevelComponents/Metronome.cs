@@ -4,6 +4,7 @@ using UnityEngine;
 // Counts the beats
 public class Metronome : MonoBehaviour
 {
+    public Store store;
     // Events
     // Central to Conducting.
     private float beatsPerMinute; // Beats per minute of song
@@ -11,18 +12,23 @@ public class Metronome : MonoBehaviour
     private float offset = 0.2f; // Offsets mp3 metadata to play on time. Positive values must me minused
     private float songPosition; // Keeps EVERYTHING in sync // Set from corresponding variable on Audio Object
     
-    private int lastBeat;
+    private int lastBeat = 0;
     private float nextBeatPosition;
     private int activeBeat = -1; // The current beat. Value is current beat if valid, -1 if otherwise
     private float margin = 80f; // Margin of error in milliseconds
     private float activeBeatStartPos;
     private float activeBeatEndPos;
-    
-    
-    public Metronome(float beatsPerMinute)
+
+    private void Awake()
+    {
+        Store.startMetronome += StartMetronome;
+        Store.updateLevel += UpdateMetronome;
+    }
+
+    private void StartMetronome(int beatsPerMinute)
     {
         this.beatsPerMinute = beatsPerMinute;
-        beatDurationMs = 60f / beatsPerMinute * 1000f;
+        beatDurationMs = (60f / beatsPerMinute) * 1000f;
         nextBeatPosition = beatDurationMs;
         
         activeBeat = -1;
@@ -30,20 +36,32 @@ public class Metronome : MonoBehaviour
         activeBeatEndPos = nextBeatPosition + margin;
     }
 
-    public void UpdateMetronome()
+    private void UpdateMetronome()
     {
-        // songPosition = Store.GetSongPosition();
+        songPosition = store.GetSongPosition() + offset;
+        
+        
         if (songPosition >= nextBeatPosition)
         {
             lastBeat += 1;
-            // Emit the lastBeat value
+            store.UpdateLastBeat(lastBeat);
+            
+            nextBeatPosition += beatDurationMs;
+            activeBeatStartPos = nextBeatPosition - margin;
+            activeBeatEndPos = nextBeatPosition + margin;
         }
-
-        nextBeatPosition += beatDurationMs;
-
-        // Update activeBeat with margin (and positions)
-        // Emit when activeBeat is valid
-        // Emit when activeBeat is invalid (-1)
+        
+        if (songPosition > activeBeatStartPos && songPosition < activeBeatEndPos)
+        {
+            activeBeat = (int) (nextBeatPosition / beatDurationMs);
+            store.ValidActiveBeat(activeBeat);
+        }
+        else
+        {
+            activeBeat = -1;
+            store.InvalidActiveBeat();
+        }
+        // Debug.Log(activeBeat);
     }
 
     public void StopMetronome()

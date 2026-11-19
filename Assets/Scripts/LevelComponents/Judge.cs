@@ -1,9 +1,15 @@
+using System;
 using UnityEngine;
 
 // Determines which inputs are valid
 public class Judge : MonoBehaviour
 {
-    // Delegates
+    public Store store;
+
+    private void Awake()
+    {
+        
+    }
 
     // Asks composer (in store) for next input
     // One button, one beat position

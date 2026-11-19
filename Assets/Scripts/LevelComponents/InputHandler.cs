@@ -15,15 +15,15 @@ public class InputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            store.UpdateSlideInput(-1);
+            store.SlideInput(-1);
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            store.UpdateSlideInput(1);
+            store.SlideInput(1);
         }
         else
         {
-            store.UpdateSlideInput(0);
+            store.SlideInput(0);
         }
     }
 }

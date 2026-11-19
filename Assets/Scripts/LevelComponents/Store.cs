@@ -4,37 +4,49 @@ using UnityEngine;
 public class Store : MonoBehaviour
 {
     // Events (definitely not finished)
-    public static event Action updateLevel;
-        // Metronome
-    public static event Action validActiveBeat;
-    public static event Action invalidActiveBeat;
-    public static event Action<int> emitLastBeat;
-    
-        // Judge
-    public static event Action success;
-    public static event Action fail;
 
-        // Input Handler
-    public static event Action<int> updateSlidePosition;
-        // Composer
-        
-        // MusicPlayer
-
-        // SongManager
     public static event Action startLevel;
+    public static event Action updateLevel;
     public static event Action endLevel;
     
+        // SongManager
+    public static event Action<int> startMetronome;
+    public static event Action startComposer;
+    
+        // MusicPlayer
+    public static event Action<AudioSource> startMusicPlayer;
+    public static event Action musicEnded;
+
+    // Metronome
+    public static event Action validActiveBeatEvent;
+    public static event Action invalidActiveBeatEvent;
+    public static event Action<int> emitLastBeatEvent;
+    
+        // Input Handler
+    public static event Action<int> slideInputEvent;
+        // Composer
+        
+        // Judge
+        public static event Action successEvent;
+        public static event Action failEvent;
+        
     
     // Variables
-    private float input;
+    private int input;
     private float songPosition;
-    private float lastBeat;
+    
+    private int lastBeat;
+    private int activeBeat;
 
     // Updater Functions that emit events
     
     // Song Manager
-    public void StartLevel()
+    public void StartLevel(AudioSource music, int beatsPerMinute)
     {
+        startMusicPlayer?.Invoke(music);
+        startMetronome?.Invoke(beatsPerMinute);
+        // startComposer?.Invoke();
+        
         startLevel?.Invoke();
     }
 
@@ -49,28 +61,42 @@ public class Store : MonoBehaviour
     }
     
     // Music Player
-    public void UpdateSongPosition()
+    public void UpdateSongPosition(float songPosition)
     {
-        // Get the current song position from the music player
-        throw new System.NotImplementedException();
+        this.songPosition = songPosition;
+    }
+
+    public float GetSongPosition()
+    {
+        return songPosition;
+    }
+
+    public void MusicEnded()
+    {
+        
+    }
+    
+    // Metronome
+    public void UpdateLastBeat(int lastBeat)
+    {
+        this.lastBeat = lastBeat;
+    }
+
+    public void ValidActiveBeat(int activeBeat)
+    {
+        this.activeBeat = activeBeat;
+    }
+
+    public void InvalidActiveBeat()
+    {
+        activeBeat = -1;
     }
 
     // Input Handler
-    public void UpdateSlideInput(int input)
+    public void SlideInput(int input)
     {
         this.input = input;
-        updateSlidePosition?.Invoke(input);
-    }
-
-    // Judge
-    public void EmitFail()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public float EmitSuccess()
-    {
-        throw new System.NotImplementedException();
+        slideInputEvent?.Invoke(input);
     }
     
 }
