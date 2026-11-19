@@ -484,6 +484,7 @@ GameObject:
   - component: {fileID: 497785310}
   - component: {fileID: 497785309}
   - component: {fileID: 497785313}
+  - component: {fileID: 497785314}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -597,9 +598,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44943dd58842c9946a84cbc8dc055daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarController
+  inputHandler: {fileID: 497785314}
   speed: 5
   moveSpeed: 7
   laneDistance: 2
+--- !u!114 &497785314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497785308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e72f9161aa1834489d01ce1e28672f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputHandler
+  slideRef: {fileID: 8233278117208696104, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &618884869
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    public InputHandler inputHandler;
     public float speed = 5f;
     public float moveSpeed = 3f;
     public float laneDistance = 2f;
@@ -10,17 +9,12 @@ public class CarController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Store.moveValue += ChangeLane;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Player input
-        currentLane += inputHandler.GetMovement();
-
-        currentLane = Mathf.Clamp(currentLane, 0, 2);
-
         float targetX = (currentLane - 1) * laneDistance;
 
         Vector3 targetPosition = new Vector3(
@@ -34,5 +28,12 @@ public class CarController : MonoBehaviour
             targetPosition,
             moveSpeed * Time.deltaTime
         );
+    }
+
+    void ChangeLane(int input)
+    {
+        // Player input
+        currentLane += input;
+        currentLane = Mathf.Clamp(currentLane, 0, 2);
     }
 }

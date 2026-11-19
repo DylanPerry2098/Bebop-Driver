@@ -4,21 +4,17 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
-    public InputActionReference slideRef;
+    public Store store;
     
-    public int GetMovement()
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            return -1;
+            store.UpdateSlideInput(-1);
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            return 1;
-        }
-        else
-        {
-            return 0;
+            store.UpdateSlideInput(1);
         }
     }
     

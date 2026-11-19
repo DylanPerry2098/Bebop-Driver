@@ -14,8 +14,7 @@ public class Store : MonoBehaviour
     public static event Action fail;
 
         // Input Handler
-    public static event Action moveLeft;
-    public static event Action moveRight;
+    public static event Action<int> moveValue;
         // Composer
         
         // MusicPlayer
@@ -28,13 +27,28 @@ public class Store : MonoBehaviour
     
     
     // Variables
-    public float songPosition;
-    public float lastBeat;
+    private float songPosition;
+    private float lastBeat;
 
     // Updater Functions that emit events
-    public float SetSongPosition()
+    public void SetSongPosition()
     {
         // Get the current song position from the music player
+        throw new System.NotImplementedException();
+    }
+
+    public void UpdateSlideInput(int input)
+    {
+        moveValue?.Invoke(input);
+    }
+
+    public void EmitFail()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public float EmitSuccess()
+    {
         throw new System.NotImplementedException();
     }
     
