@@ -6,23 +6,23 @@ public class Metronome : MonoBehaviour
 {
     // Events
     // Central to Conducting.
-    public float bpm; // Beats per minute of song
-    public float beatDurationMs; // Time duration of beat, calculated from BPM
-    public float offset = 0.2f; // Offsets mp3 metadata to play on time. Positive values must me minused
-    public float songPosition; // Keeps EVERYTHING in sync // Set from corresponding variable on Audio Object
+    private float beatsPerMinute; // Beats per minute of song
+    private float beatDurationMs; // Time duration of beat, calculated from BPM
+    private float offset = 0.2f; // Offsets mp3 metadata to play on time. Positive values must me minused
+    private float songPosition; // Keeps EVERYTHING in sync // Set from corresponding variable on Audio Object
     
-    public int lastBeat;
-    public float nextBeatPosition;
-    public int activeBeat = -1; // The current beat. Value is current beat if valid, -1 if otherwise
+    private int lastBeat;
+    private float nextBeatPosition;
+    private int activeBeat = -1; // The current beat. Value is current beat if valid, -1 if otherwise
     private float margin = 80f; // Margin of error in milliseconds
-    public float activeBeatStartPos;
-    public float activeBeatEndPos;
+    private float activeBeatStartPos;
+    private float activeBeatEndPos;
     
     
-    public Metronome(float bpm)
+    public Metronome(float beatsPerMinute)
     {
-        this.bpm = bpm;
-        beatDurationMs = 60f / bpm * 1000f;
+        this.beatsPerMinute = beatsPerMinute;
+        beatDurationMs = 60f / beatsPerMinute * 1000f;
         nextBeatPosition = beatDurationMs;
         
         activeBeat = -1;

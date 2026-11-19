@@ -5,8 +5,13 @@ using UnityEngine.InputSystem;
 public class InputHandler : MonoBehaviour
 {
     public Store store;
+
+    private void Awake()
+    {
+        Store.updateLevel += GetInput;
+    }
     
-    public void Update()
+    public void GetInput()
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -16,7 +21,9 @@ public class InputHandler : MonoBehaviour
         {
             store.UpdateSlideInput(1);
         }
+        else
+        {
+            store.UpdateSlideInput(0);
+        }
     }
-    
-    // Emit The Action Event
 }
