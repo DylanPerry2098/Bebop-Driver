@@ -5,6 +5,7 @@ public class CarController : MonoBehaviour
     public float speed = 5f;
     public float moveSpeed = 3f;
     public float laneDistance = 2f;
+    public int maxLane = 2;
     private int currentLane = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +26,7 @@ public class CarController : MonoBehaviour
             currentLane++;
         }
 
-        currentLane = Mathf.Clamp(currentLane, 0, 2);
+        currentLane = Mathf.Clamp(currentLane, 0, maxLane - 1);
 
         float targetX = (currentLane - 1) * laneDistance;
 
