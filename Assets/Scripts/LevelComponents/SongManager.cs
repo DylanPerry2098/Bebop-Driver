@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // Coordinates all the components (through store)
-public class GameManager : MonoBehaviour
+public class SongManager : MonoBehaviour
 {
     // Starting the level
         // Give track to music player (thru store)

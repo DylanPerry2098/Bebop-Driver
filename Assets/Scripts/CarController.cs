@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+    public InputHandler inputHandler;
     public float speed = 5f;
     public float moveSpeed = 3f;
     public float laneDistance = 2f;
@@ -15,15 +16,8 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            currentLane--;
-        }
-
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            currentLane++;
-        }
+        // Player input
+        currentLane += inputHandler.GetMovement();
 
         currentLane = Mathf.Clamp(currentLane, 0, 2);
 

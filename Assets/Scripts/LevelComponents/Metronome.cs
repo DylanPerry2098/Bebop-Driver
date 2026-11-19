@@ -4,6 +4,7 @@ using UnityEngine;
 // Counts the beats
 public class Metronome : MonoBehaviour
 {
+    // Events
     // Central to Conducting.
     public float bpm; // Beats per minute of song
     public float beatDurationMs; // Time duration of beat, calculated from BPM
@@ -28,8 +29,8 @@ public class Metronome : MonoBehaviour
         activeBeatStartPos = nextBeatPosition - margin;
         activeBeatEndPos = nextBeatPosition + margin;
     }
-    
-    private void UpdateConductor()
+
+    public void UpdateMetronome()
     {
         // songPosition = Store.GetSongPosition();
         if (songPosition >= nextBeatPosition)
@@ -37,16 +38,21 @@ public class Metronome : MonoBehaviour
             lastBeat += 1;
             // Emit the lastBeat value
         }
-        nextBeatPosition += beatDurationMs;
-        
-        
-        // Update activeBeat with margin (and positions)
-            // Emit when activeBeat is valid
-            // Emit when activeBeat is invalid (-1)
-        
-        // Stop the level
-            // Called when GameManager emits end level event (thru store)
-            // Stops the count
 
+        nextBeatPosition += beatDurationMs;
+
+        // Update activeBeat with margin (and positions)
+        // Emit when activeBeat is valid
+        // Emit when activeBeat is invalid (-1)
     }
+
+    public void StopMetronome()
+    {
+        // Stop the level
+        // Called when GameManager emits end level event (thru store)
+        // Stops the count
+    }
+    
+
+    
 }
