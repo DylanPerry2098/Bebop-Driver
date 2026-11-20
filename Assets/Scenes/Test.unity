@@ -259,6 +259,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 884ecf410c8c845429f7bbcb79312a8b, type: 3}
+--- !u!1 &256719570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3993270857157756317, guid: 884ecf410c8c845429f7bbcb79312a8b, type: 3}
+  m_PrefabInstance: {fileID: 256719569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &275008602
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d92443bff5c04b42b042871d826df11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartPauseMenu
-  pauseMenu: {fileID: 1854591939}
+  pauseMenu: {fileID: 256719570}
 --- !u!1 &935283581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,11 +1199,6 @@ Transform:
   - {fileID: 113169135}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1854591939 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2479605478414554526, guid: 884ecf410c8c845429f7bbcb79312a8b, type: 3}
-  m_PrefabInstance: {fileID: 256719569}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1983417584
 GameObject:
   m_ObjectHideFlags: 0
