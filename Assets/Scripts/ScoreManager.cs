@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
+        Store.successEvent += OnSlideInputEvent;
         if (instance == null)
         {
             instance = this;
@@ -31,6 +32,11 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void OnSlideInputEvent()
+    {
+        IncreaseScore();
+    }
+    
     public void SetScoreText(TMP_Text newText)
     {
         scoreText = newText;
