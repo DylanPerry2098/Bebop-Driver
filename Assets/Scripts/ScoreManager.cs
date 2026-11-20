@@ -4,6 +4,7 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
+    public Store store;
     public int testScore = 0;
     public static int score = 0;
 

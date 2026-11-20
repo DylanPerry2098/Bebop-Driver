@@ -4,7 +4,8 @@ using Random = UnityEngine.Random;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [Header("References")]
+    [Header("References")] 
+    public Store store;
     public GameObject enemyCarPrefab;
     public Transform spawnPoint;
 
