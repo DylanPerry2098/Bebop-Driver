@@ -23,6 +23,7 @@ public class CarController : MonoBehaviour
     // Called by Store event
     void ChangeLane(int input)
     {
+        // Either this should be handled by the Judge class, or there should be a better way of changing lanes.
         if (isLerping)
         {
             return;
@@ -39,12 +40,13 @@ public class CarController : MonoBehaviour
             transform.position.z
         );
 
+        StartCoroutine(LerpCar(targetPosition));
         // transform.position = Vector3.Lerp(
         //     transform.position,
         //     targetPosition,
         //     moveSpeed * Time.deltaTime
         // );
-        StartCoroutine(LerpCar(targetPosition));
+        
     }
 
     IEnumerator LerpCar(Vector3 targetPosition)
