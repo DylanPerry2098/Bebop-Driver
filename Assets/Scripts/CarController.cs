@@ -36,5 +36,14 @@ public class CarController : MonoBehaviour
             targetPosition,
             moveSpeed * Time.deltaTime
         );
-    }
+
+        if (Mathf.Abs(transform.position.x - targetX) < 0.01f)
+        {
+            transform.position = new Vector3(
+                targetX,
+                transform.position.y,
+                transform.position.z
+            );
+        }
+        }
 }
