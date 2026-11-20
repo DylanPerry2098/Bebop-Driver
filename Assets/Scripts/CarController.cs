@@ -19,8 +19,8 @@ public class CarController : MonoBehaviour
     {
         // This will be changed to include the judge's input
         // Beat has to be approved by judge, event to change lane sent out
-        // Store.changeLaneEvent += ChangeLane; 
-        Store.slideInputEvent += ChangeLane; // Debug
+        Store.changeLaneEvent += ChangeLane; 
+        // Store.slideInputEvent += ChangeLane; // Debug
     }
 
     // Called by Store event
@@ -44,20 +44,6 @@ public class CarController : MonoBehaviour
         );
 
         StartCoroutine(LerpCar(targetPosition));
-        // transform.position = Vector3.Lerp(
-        //     transform.position,
-        //     targetPosition,
-        //     moveSpeed * Time.deltaTime
-        // );
-        //
-        // if (Mathf.Abs(transform.position.x - targetX) < 0.01f)
-        // {
-        //     transform.position = new Vector3(
-        //         targetX,
-        //         transform.position.y,
-        //         transform.position.z
-        //     );
-        // }
     }
 
     IEnumerator LerpCar(Vector3 targetPosition)
