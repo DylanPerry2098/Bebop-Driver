@@ -41,4 +41,12 @@ public class StartPauseMenu : MonoBehaviour
             SceneManager.GetActiveScene().buildIndex
         );
     }
+
+    public void PauseButton()
+    {
+        if (pauseMenu.activeSelf)
+            Resume();
+        else
+            Pause();
+    }
 }
