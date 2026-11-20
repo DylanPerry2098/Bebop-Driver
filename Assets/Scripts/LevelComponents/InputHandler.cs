@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
+    // NEED TO ADD INPUT BUFFERING TO THIS GAME
     public Store store;
 
     private void Awake()
