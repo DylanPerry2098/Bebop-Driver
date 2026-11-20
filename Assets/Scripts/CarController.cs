@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+    public InputHandler inputHandler;
     public float speed = 5f;
     public float moveSpeed = 3f;
     public float laneDistance = 2f;
+    public int maxLane = 2;
     private int currentLane = 1;
     private float timeElapsed;
 
     private bool isLerping = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -32,6 +35,11 @@ public class CarController : MonoBehaviour
         currentLane += input;
         currentLane = Mathf.Clamp(currentLane, 0, 2);
         
+        // Player input
+        currentLane += inputHandler.GetMovement();
+
+        currentLane = Mathf.Clamp(currentLane, 0, maxLane - 1);
+
         float targetX = (currentLane - 1) * laneDistance;
         
         Vector3 targetPosition = new Vector3(
@@ -70,4 +78,19 @@ public class CarController : MonoBehaviour
         transform.position = targetPosition;
         isLerping = false;
     }
+        transform.position = Vector3.Lerp(
+            transform.position,
+            targetPosition,
+            moveSpeed * Time.deltaTime
+        );
+
+        if (Mathf.Abs(transform.position.x - targetX) < 0.01f)
+        {
+            transform.position = new Vector3(
+                targetX,
+                transform.position.y,
+                transform.position.z
+            );
+        }
+        }
 }
