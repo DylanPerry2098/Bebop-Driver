@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ObstacleSpawner : MonoBehaviour
 {
@@ -14,6 +16,16 @@ public class ObstacleSpawner : MonoBehaviour
     public bool randomizeLane = true;
 
     // Call this from your beat detection script
+    private void Awake()
+    {
+        Store.validActiveBeatEvent += OnValidActiveBeat;
+    }
+
+    public void OnValidActiveBeat()
+    {
+        SpawnEnemy();
+    }
+    
     public void SpawnEnemy()
     {
         if (enemyCarPrefab == null || spawnPoint == null)
