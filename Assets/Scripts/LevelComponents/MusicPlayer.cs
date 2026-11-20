@@ -24,9 +24,18 @@ public class MusicPlayer : MonoBehaviour
     {
         float songPosition = _music.time * 1000f;
         store.UpdateSongPosition(songPosition);
+
+        // Ends the level when the music stops playing
+        if (!_music.isPlaying)
+        {
+            EndMusic();
+        }
     }
-    
-    
+
+    private void EndMusic()
+    {
+        Debug.Log("Level has ended");
+    }
     // Stop the music
     // Called when GameManager emits end level event (thru store)
 }

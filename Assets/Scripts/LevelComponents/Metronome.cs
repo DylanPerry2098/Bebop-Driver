@@ -15,7 +15,7 @@ public class Metronome : MonoBehaviour
     private int lastBeat = 0;
     private float nextBeatPosition;
     private int activeBeat = -1; // The current beat. Value is current beat if valid, -1 if otherwise
-    private float margin = 80f; // Margin of error in milliseconds
+    private float margin = 200f; // Margin of error in milliseconds
     private float activeBeatStartPos;
     private float activeBeatEndPos;
 
@@ -40,7 +40,6 @@ public class Metronome : MonoBehaviour
     {
         songPosition = store.GetSongPosition() + offset;
         
-        
         if (songPosition >= nextBeatPosition)
         {
             lastBeat += 1;
@@ -53,15 +52,23 @@ public class Metronome : MonoBehaviour
         
         if (songPosition > activeBeatStartPos && songPosition < activeBeatEndPos)
         {
-            activeBeat = (int) (nextBeatPosition / beatDurationMs);
+            if (activeBeat != -1)
+            {
+                return;
+            }
+            activeBeat = lastBeat;
             store.ValidActiveBeat(activeBeat);
         }
         else
         {
+            if (activeBeat == -1)
+            {
+                return;
+            }
             activeBeat = -1;
             store.InvalidActiveBeat();
         }
-        // Debug.Log(activeBeat);
+        Debug.Log(activeBeat);
     }
 
     public void StopMetronome()

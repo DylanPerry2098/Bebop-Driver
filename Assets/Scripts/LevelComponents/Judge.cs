@@ -8,8 +8,32 @@ public class Judge : MonoBehaviour
 
     private void Awake()
     {
+        Store.slideInputEvent += VerifyInput;
+    }
+    
+    private void VerifyInput(int input)
+    {
+        if (store.GetActiveBeat() == -1)
+        {
+            store.EmitFail();
+        }
+        else
+        {
+            store.EmitSuccess();
+        }
+    }
+
+    private void OnEndLevel()
+    {
         
     }
+
+    // Waits for next input
+    // Checks if the beat is active
+    // If beat is not active -> fail
+    // If beat is active -> succeed
+
+    // IGNORE LOGIC DOWN BELOW
 
     // Asks composer (in store) for next input
     // One button, one beat position

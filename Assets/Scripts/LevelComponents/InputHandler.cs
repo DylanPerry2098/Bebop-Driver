@@ -21,9 +21,5 @@ public class InputHandler : MonoBehaviour
         {
             store.SlideInput(1);
         }
-        else
-        {
-            store.SlideInput(0);
-        }
     }
 }

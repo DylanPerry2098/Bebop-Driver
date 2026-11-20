@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817937190e8bc8f42b8a7b4fdcfcf5fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Judge
-  store: {fileID: 0}
+  store: {fileID: 2085356774}
 --- !u!114 &2085356770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,7 +2171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d5b95afe888b04d99d404c8e21a393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Composer
-  store: {fileID: 0}
+  store: {fileID: 2085356774}
 --- !u!114 &2085356771
 MonoBehaviour:
   m_ObjectHideFlags: 0

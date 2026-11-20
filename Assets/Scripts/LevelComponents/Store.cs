@@ -23,7 +23,9 @@ public class Store : MonoBehaviour
     public static event Action<int> emitLastBeatEvent;
     
         // Input Handler
-    public static event Action<int> slideInputEvent;
+        public static event Action<int> slideInputEvent;
+
+        public static event Action<int> changeLaneEvent;
         // Composer
         
         // Judge
@@ -85,11 +87,18 @@ public class Store : MonoBehaviour
     public void ValidActiveBeat(int activeBeat)
     {
         this.activeBeat = activeBeat;
+        validActiveBeatEvent?.Invoke();
     }
 
     public void InvalidActiveBeat()
     {
         activeBeat = -1;
+        invalidActiveBeatEvent?.Invoke();
+    }
+
+    public int GetActiveBeat()
+    {
+        return activeBeat;
     }
 
     // Input Handler
@@ -97,6 +106,18 @@ public class Store : MonoBehaviour
     {
         this.input = input;
         slideInputEvent?.Invoke(input);
+    }
+    
+    // Judge
+    public void EmitFail()
+    {
+        // failEvent?.Invoke();
+    }
+
+    public void EmitSuccess()
+    {
+        changeLaneEvent?.Invoke(input);
+        successEvent?.Invoke();
     }
     
 }
