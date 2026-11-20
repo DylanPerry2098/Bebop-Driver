@@ -68,7 +68,7 @@ public class Metronome : MonoBehaviour
             activeBeat = -1;
             store.InvalidActiveBeat();
         }
-        Debug.Log(activeBeat);
+        // Debug.Log(activeBeat);
     }
 
     public void StopMetronome()

@@ -36,6 +36,7 @@ public class SongManager : MonoBehaviour
     private void EndLevel()
     {
         // Stop the level
+        store.EndLevel();
         // Emit end level event (through store)
         // Compute player's final score
     }

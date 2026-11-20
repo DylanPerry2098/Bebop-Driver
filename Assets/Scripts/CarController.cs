@@ -19,8 +19,8 @@ public class CarController : MonoBehaviour
     {
         // This will be changed to include the judge's input
         // Beat has to be approved by judge, event to change lane sent out
-        // Store.changeLaneEvent += ChangeLane;
-        Store.changeLaneEvent += ChangeLane;
+        // Store.changeLaneEvent += ChangeLane; 
+        Store.slideInputEvent += ChangeLane; // Debug
     }
 
     // Called by Store event
@@ -33,11 +33,6 @@ public class CarController : MonoBehaviour
         }
         // Player input
         currentLane += input;
-        currentLane = Mathf.Clamp(currentLane, 0, 2);
-        
-        // Player input
-        currentLane += inputHandler.GetMovement();
-
         currentLane = Mathf.Clamp(currentLane, 0, maxLane - 1);
 
         float targetX = (currentLane - 1) * laneDistance;
@@ -54,7 +49,15 @@ public class CarController : MonoBehaviour
         //     targetPosition,
         //     moveSpeed * Time.deltaTime
         // );
-        
+        //
+        // if (Mathf.Abs(transform.position.x - targetX) < 0.01f)
+        // {
+        //     transform.position = new Vector3(
+        //         targetX,
+        //         transform.position.y,
+        //         transform.position.z
+        //     );
+        // }
     }
 
     IEnumerator LerpCar(Vector3 targetPosition)
@@ -63,7 +66,6 @@ public class CarController : MonoBehaviour
         timeElapsed = 0;
         float lerpTime = targetPosition.magnitude / moveSpeed;
         
-        Debug.Log("Lerping");
         while (timeElapsed < 0.25f)
         {
             timeElapsed += Time.deltaTime;
@@ -78,19 +80,4 @@ public class CarController : MonoBehaviour
         transform.position = targetPosition;
         isLerping = false;
     }
-        transform.position = Vector3.Lerp(
-            transform.position,
-            targetPosition,
-            moveSpeed * Time.deltaTime
-        );
-
-        if (Mathf.Abs(transform.position.x - targetX) < 0.01f)
-        {
-            transform.position = new Vector3(
-                targetX,
-                transform.position.y,
-                transform.position.z
-            );
-        }
-        }
 }
