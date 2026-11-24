@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class StartPauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public Store store;
 
     void Start()
     {
@@ -24,12 +25,14 @@ public class StartPauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        store.PauseGame();
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void Resume()
     {
+        store.ResumeGame();
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }

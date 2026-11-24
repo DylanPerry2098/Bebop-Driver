@@ -10,7 +10,10 @@ public class MusicPlayer : MonoBehaviour
     private void Awake()
     {
         Store.startMusicPlayer += StartMusicPlayer;
-        Store.updateLevel += UpdateSongPosition;
+        Store.updateLevel += OnUpdateLevel;
+        
+        Store.pauseGame += OnPauseGame;
+        Store.resumeGame += OnResumeGame;
     }
 
     private void StartMusicPlayer(AudioSource music)
@@ -18,6 +21,11 @@ public class MusicPlayer : MonoBehaviour
         _music = music;
         _music.Play();
        
+    }
+
+    private void OnUpdateLevel()
+    {
+        UpdateSongPosition();
     }
 
     private void UpdateSongPosition()
@@ -32,10 +40,21 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
+    // Stop the music
+    // Called when GameManager emits end level event (thru store)
     private void EndMusic()
     {
         Debug.Log("Level has ended");
     }
-    // Stop the music
-    // Called when GameManager emits end level event (thru store)
+
+    private void OnPauseGame()
+    {
+        _music.Pause();
+    }
+
+    private void OnResumeGame()
+    {
+        _music.Play();
+    }
+    
 }

@@ -22,19 +22,23 @@ public class Store : MonoBehaviour
     public static event Action invalidActiveBeatEvent;
     public static event Action<int> emitLastBeatEvent;
     
-        // Input Handler
-        public static event Action<int> slideInputEvent;
+    // Input Handler
+    public static event Action<int> slideInputEvent;
 
-        public static event Action<int> changeLaneEvent;
-        // Composer
-        
-        // Judge
-        public static event Action successEvent;
-        public static event Action failEvent;
-        
+    public static event Action<int> changeLaneEvent;
+    // Composer
+    
+    // Judge
+    public static event Action successEvent;
+    public static event Action failEvent;
+    
+    // Other
+    public static event Action pauseGame;
+    public static event Action resumeGame;
+    
     
     // Variables
-    private int input;
+    private int input = 0;
     private float songPosition;
     
     private int lastBeat;
@@ -118,6 +122,18 @@ public class Store : MonoBehaviour
     {
         changeLaneEvent?.Invoke(input);
         successEvent?.Invoke();
+    }
+    
+    // Other
+
+    public void PauseGame()
+    {
+        pauseGame?.Invoke();
+    }
+
+    public void ResumeGame()
+    {
+        resumeGame?.Invoke();
     }
     
 }

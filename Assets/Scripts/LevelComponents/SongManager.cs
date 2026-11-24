@@ -12,6 +12,8 @@ public class SongManager : MonoBehaviour
     private void Awake()
     {
         Store.musicEnded += EndLevel;
+        Store.pauseGame += OnPauseGame;
+        Store.resumeGame += OnResumeGame;
     }
 
     private void Start()
@@ -37,8 +39,20 @@ public class SongManager : MonoBehaviour
     {
         // Stop the level
         store.EndLevel();
-        // Emit end level event (through store)
+        Time.timeScale = 0; // To stop the updating
+        
         // Compute player's final score
+        // Show it to the player through a pause screen
+    }
+    
+    private void OnPauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void OnResumeGame()
+    {
+        Time.timeScale = 1;
     }
 
     

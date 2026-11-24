@@ -9,9 +9,14 @@ public class InputHandler : MonoBehaviour
 
     private void Awake()
     {
-        Store.updateLevel += GetInput;
+        Store.updateLevel += OnUpdateLevel;
     }
     
+    private void OnUpdateLevel() 
+    {
+        GetInput();
+    }
+
     public void GetInput()
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))

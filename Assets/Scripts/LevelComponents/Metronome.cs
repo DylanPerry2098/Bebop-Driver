@@ -15,7 +15,7 @@ public class Metronome : MonoBehaviour
     private int lastBeat = 0;
     private float nextBeatPosition;
     private int activeBeat = -1; // The current beat. Value is current beat if valid, -1 if otherwise
-    private float margin = 200f; // Margin of error in milliseconds
+    private float margin = 300f; // Margin of error in milliseconds
     private float activeBeatStartPos;
     private float activeBeatEndPos;
 

@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
 
     private TMP_Text scoreText;
 
-    void Start()
+    void OnStartLevel()
     {
         if (testScore > 0)
         {
@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
+        Store.startLevel += OnStartLevel;
         Store.successEvent += OnSlideInputEvent;
         if (instance == null)
         {
@@ -52,7 +53,7 @@ public class ScoreManager : MonoBehaviour
 
     public void DecreaseScore()
     {
-        score = Mathf.Max(0, score - 1);
+        score = Mathf.Max(0, score - 4);
         Debug.Log("New Score: " + score);
         UpdateScore();
     }

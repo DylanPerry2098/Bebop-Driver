@@ -19,8 +19,13 @@ public class CarController : MonoBehaviour
     {
         // This will be changed to include the judge's input
         // Beat has to be approved by judge, event to change lane sent out
-        Store.changeLaneEvent += ChangeLane; 
+        Store.changeLaneEvent += OnChangeLaneEvent; 
         // Store.slideInputEvent += ChangeLane; // Debug
+    }
+
+    void OnChangeLaneEvent(int input)
+    {
+        ChangeLane(input);
     }
 
     // Called by Store event

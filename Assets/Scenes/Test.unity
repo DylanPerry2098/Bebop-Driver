@@ -544,6 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartPauseMenu
   pauseMenu: {fileID: 256719570}
+  store: {fileID: 2085356774}
 --- !u!1 &935283581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbee67c342fd2b3458460058b6ddf2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawner
-  store: {fileID: 0}
+  store: {fileID: 2085356774}
   enemyCarPrefab: {fileID: 1455178944508766359, guid: 530f6051c3e8f3c4d887e4131366ac4e, type: 3}
   spawnPoint: {fileID: 113169135}
   lanePositions:
@@ -1102,7 +1103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522015dfecc1f9f4eb225d05c97769a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
-  store: {fileID: 0}
+  store: {fileID: 2085356774}
   testScore: 5
 --- !u!4 &1983417586
 Transform:

@@ -8,7 +8,12 @@ public class Judge : MonoBehaviour
 
     private void Awake()
     {
-        Store.slideInputEvent += VerifyInput;
+        Store.slideInputEvent += OnSlideInputEvent;
+    }
+
+    private void OnSlideInputEvent(int input)
+    {
+        VerifyInput(input);
     }
     
     private void VerifyInput(int input)
